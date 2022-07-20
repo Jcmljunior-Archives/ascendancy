@@ -1,7 +1,7 @@
-import 'package:ascendancy/app/view/preferences_view.dart';
 import 'package:flutter/material.dart';
 
 import '../view/initial_view.dart';
+import '../view/preferences_view.dart';
 
 class RoutesProvider with ChangeNotifier {
   String activePath = '/';
@@ -11,10 +11,11 @@ class RoutesProvider with ChangeNotifier {
     '/preferences': (BuildContext context) => const PreferencesView(),
   };
 
-  pathFor(BuildContext context, String path) {
-    if (routes.containsKey(path)) {
-      activePath = path;
-      Navigator.pushNamed(context, path);
-    }
+  // Define a rota em atividade.
+  // Notifica as dependencias.
+  void setActivePath(String activePath) {
+    this.activePath = activePath;
+
+    notifyListeners();
   }
 }

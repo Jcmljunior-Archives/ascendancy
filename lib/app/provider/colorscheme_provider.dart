@@ -12,7 +12,7 @@ class ColorSchemeProvider with ChangeNotifier {
   late Color accentColor = Colors.green;
   late ThemeData themeData;
 
-  handleBrightness() {
+  Brightness handleBrightness() {
     switch (colorScheme) {
       case ColorsSchemes.light:
         return Brightness.light;
@@ -33,6 +33,9 @@ class ColorSchemeProvider with ChangeNotifier {
     );
   }
 
+  // Define um novo padrão de cor.
+  // Atualiza o estado do tema ativo.
+  // Notifica as dependencias.
   setColorScheme(ColorsSchemes colorScheme) {
     this.colorScheme = colorScheme;
     themeData = updateThemes(colorScheme, accentColor);
@@ -40,6 +43,9 @@ class ColorSchemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // Define a cor de destaque.
+  // Atualiza o estado do tema ativo.
+  // Notifica as dependencias.
   setAccentColor(Color accentColor) {
     this.accentColor = accentColor;
     themeData = updateThemes(colorScheme, accentColor);

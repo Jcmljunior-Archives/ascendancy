@@ -9,15 +9,9 @@ void main(List<String> args) {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => CountProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ColorSchemeProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => RoutesProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => CountProvider()),
+        ChangeNotifierProvider(create: (_) => ColorSchemeProvider()),
+        ChangeNotifierProvider(create: (_) => RoutesProvider()),
       ],
       child: const Bootstrap(),
     ),
@@ -30,6 +24,7 @@ class Bootstrap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Learning App',
       debugShowCheckedModeBanner: false,
       theme: context.watch<ColorSchemeProvider>().updateThemes(
             context.read<ColorSchemeProvider>().colorScheme,

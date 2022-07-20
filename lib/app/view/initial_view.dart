@@ -1,8 +1,8 @@
-import 'package:ascendancy/app/provider/routes_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/count_provider.dart';
+import '../component/appbar_component.dart';
 
 class InitialView extends StatelessWidget {
   const InitialView({super.key});
@@ -10,24 +10,9 @@ class InitialView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.read<RoutesProvider>().activePath),
-        backgroundColor: Theme.of(context).primaryColor,
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              context.read<RoutesProvider>().pathFor(context, '/');
-            },
-            child: const Text('Home'),
-          ),
-          TextButton(
-            onPressed: () {
-              context.read<RoutesProvider>().pathFor(context, '/preferences');
-            },
-            child: const Text('Preferences'),
-          ),
-        ],
-      ),
+      appBar: const AppBarComponent(
+        title: 'Home Page',
+      ).build(context),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -47,20 +32,22 @@ class InitialView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () {
                   context.read<CountProvider>().increment();
                 },
-                child: const Text('Incrementar'),
+                icon: const Icon(Icons.add),
+                label: const Text('Incrementar'),
               ),
               const SizedBox(
                 width: 6,
               ),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () {
                   context.read<CountProvider>().decrement();
                 },
-                child: const Text('Decrementar'),
+                icon: const Icon(Icons.remove),
+                label: const Text('Decrementar'),
               ),
             ],
           ),

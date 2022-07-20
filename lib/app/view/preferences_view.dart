@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/colorscheme_provider.dart';
-import '../provider/routes_provider.dart';
+import '../component/appbar_component.dart';
 
 class PreferencesView extends StatelessWidget {
   const PreferencesView({super.key});
@@ -53,9 +53,9 @@ class PreferencesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.read<RoutesProvider>().activePath),
-      ),
+      appBar: const AppBarComponent(
+        title: 'Preferencias',
+      ).build(context),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(24),
