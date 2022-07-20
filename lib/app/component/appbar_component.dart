@@ -15,7 +15,7 @@ class AppBarComponent extends StatelessWidget {
   AppBar build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      leading: context.read<RoutesProvider>().activePath != '/'
+      leading: context.watch<RoutesProvider>().activePath != '/'
           ? IconButton(
               splashRadius: 26,
               icon: const Icon(Icons.arrow_back),

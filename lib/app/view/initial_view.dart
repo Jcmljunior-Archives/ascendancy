@@ -43,9 +43,11 @@ class InitialView extends StatelessWidget {
                 width: 6,
               ),
               ElevatedButton.icon(
-                onPressed: () {
-                  context.read<CountProvider>().decrement();
-                },
+                onPressed: context.watch<CountProvider>().count > 0
+                    ? () {
+                        context.read<CountProvider>().decrement();
+                      }
+                    : null,
                 icon: const Icon(Icons.remove),
                 label: const Text('Decrementar'),
               ),
